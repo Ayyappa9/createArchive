@@ -1,0 +1,59 @@
+<div class="invitenavbar-top">
+    <div class="siteBrand">
+        <img class="siteLogo">
+    </div>
+</div>
+<div class="invite-icon">
+    <div class="text-align-center">
+       <img class="inviteLogo">
+    </div>
+</div>
+<div class="invite-title">
+    <div class="container text-align-center">
+        <h2>Get 100 credits from {{ fromCustomerName }}</h2>
+    </div>
+</div>
+<div class="invite-description">
+    <div class="container text-align-center">
+        <p>Enter your mobile number to install Tipp application. After you take first trip will add 100 credits to you and your friend.</p>
+    </div>
+</div>
+<form class="form-signin" method="POST" action="#" role="form">
+    <div class="form-group">
+    </div>
+    <div *ngIf="errorMessage!=null" class="alert alert-danger" style="margin-top: 20px;border-color: #ddd;background: aliceblue;">
+        {{ errorMessage }}
+    </div>
+    <div class="form-group text-align-center">
+    <label class="label-mobileNumber" for="name">Mobile Number*</label>
+    <div class="input-group">
+    <input type="text" class="form-control" style="width:55px;display: none;" placeholder="+91"/>
+    <span class="input-group-addon" style="background:#f3f3f4;border-top-left-radius: 5px;border-bottom-left-radius: 5px;border-right: none;"><img class="countryLogo"><strong style="color: #8e8a86;"> +91</strong></span>
+    <input type="text" class="form-control" id="mobilenumber" required [(ngModel)]="mobileNumber" name="mobilenumber"
+    pattern="[0-9]*" minlength="10" [ngModelOptions]="{standalone: true}" maxlength="10" #mobile="ngModel">
+    </div>
+    <div [hidden]="mobile.valid || mobile.pristine"
+      class="alert alert-danger" style="margin-top: 20px;border-color: #ddd;background: aliceblue;">
+      <div [hidden]="!mobile.hasError('minlength')">Mobile number should be 10 digit.</div>
+      <div [hidden]="!mobile.hasError('required')">Mobile number is required.</div>
+      <div [hidden]="!mobile.hasError('pattern')">Mobile number should be only numbers.</div>
+    </div>
+    <!--<input type="text" class="form-control" placeholder="+91"/>
+    <span class="input-group-addon">-</span>
+    <input type="text" class="form-control" id="mobilenumber" required [(ngModel)]="mobileNumber" name="mobilenumber"
+    pattern="[0-9]*" minlength="10" [ngModelOptions]="{standalone: true}" maxlength="10" #mobile="ngModel">
+    <div [hidden]="mobile.valid || mobile.pristine"
+      class="alert alert-danger">
+      <div [hidden]="!mobile.hasError('minlength')">Mobile should be 10 digit</div>
+      <div [hidden]="!mobile.hasError('required')">Mobile is required</div>
+      <div [hidden]="!mobile.hasError('pattern')">Mobile number should be only numbers</div>
+    </div>-->
+    </div>
+    <div class="form-group">
+        <button (click)="onDownload()" id="inviteSubmit" [disabled]="mobile.invalid" type="submit" class="btn btn-block btn-inviteSubmit">
+            Download
+        </button>
+    </div>
+    <hr>
+</form>
+
